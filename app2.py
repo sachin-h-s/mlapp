@@ -52,7 +52,7 @@ if "df" in locals():
     target_col = st.text_input("Enter the name of the target column:")
     if target_col:
         preprocessor = select_and_transform_features(df, target_col)
-        X = preprocessor.fit_transform(df.drop(columns=target_col))
+        X = preprocessor.fit_transform(df.drop(columns=[target_col]))
         y = df[target_col]
 
 
