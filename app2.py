@@ -30,14 +30,14 @@ def select_and_transform_features(df):
         ("imputer", SimpleImputer(strategy="most_frequent")),
         ("onehot", OneHotEncoder(handle_unknown="ignore"))])
     preprocessor = ColumnTransformer(
-        transformers=[("num", numeric_transformer, numeric_cols),
-("cat", categorical_transformer, categorical_cols)
-])
-return preprocessor
+        transformers=[
+            ("num", numeric_transformer, numeric_cols),
+            ("cat", categorical_transformer, categorical_cols)]
+    return preprocessor
 
 
 def main():
-st.title("End-to-End Machine Learning App")
+        st.title("End-to-End Machine Learning App")
            
 # Load data
 file = st.file_uploader("Upload CSV file", type="csv")
@@ -90,5 +90,5 @@ if new_data:
     
     
 if name == "main":
-main()
+        main()
 
