@@ -62,11 +62,21 @@ if "df" in locals():
     target_col = st.text_input("Enter the name of the target column:")
     if target_col:
         if target_col in df.columns:
-            preprocessor = select_and_transform_features(df, target_col)
-            X = preprocessor.fit_transform(df.drop(target_col))
-            y = df[target_col]
+            # Check the number of columns in df.drop(target_col)
+            if len(df.drop(target_col).columns) == len(preprocessor.transformers):
+                preprocessor = select_and_transform_features(df, target_col)
+                X = preprocessor.fit_transform(df.drop(target_col))
+                y = df[target_col]
+            else:
+                st.write("The number of columns in the data does not match the number of transformers in the preprocessor.")
         else:
             st.write("The specified target column is not in the dataframe.")
+#This code first checks the number of columns in the df.drop(target_col) dataframe and compares it to the number of transformers in the preprocessor object. If these values are not equal, it displays an error message to the user. Otherwise, it applies the transformations using the preprocessor object and assigns the resulting transformed data to the X and y variables.
+
+
+
+
+
 
 # Split data into training and test sets
 if "X" in locals() and "y" in locals():
