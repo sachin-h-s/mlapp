@@ -17,7 +17,7 @@ def load_data(file):
     return df
 
 # Function to select features and apply transformations
-def select_and_transform_features(df):
+def select_and_transform_features(df, target_col):
     # Select numeric columns
     numeric_cols = df.select_dtypes(include=["int64", "float64"]).columns
     # Select categorical columns
@@ -35,6 +35,7 @@ def select_and_transform_features(df):
             ("cat", categorical_transformer, categorical_cols)
         ])
     return preprocessor
+
 
 
 def main():
