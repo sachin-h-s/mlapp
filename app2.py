@@ -76,7 +76,7 @@ if "model" in locals():
     st.dataframe(results)
 
 # Show feature importances
-if model_choice == "Random Forest":
+if "model_choice" in locals() and model_choice == "Random Forest":
     st.write("Feature importances:")
     importances = pd.Series(model.feature_importances_, index=df.drop(columns=["target"]).columns)
     st.write(importances.sort_values(ascending=False))
@@ -90,6 +90,7 @@ if new_data:
     st.write(f"Prediction: {prediction[0]:.2f}")
     
     
-if name == "main":
+if __name__ == "__main__":
         main()
+
 
