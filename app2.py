@@ -32,8 +32,9 @@ def select_and_transform_features(df):
     preprocessor = ColumnTransformer(
         transformers=[
             ("num", numeric_transformer, numeric_cols),
-            ("cat", categorical_transformer, categorical_cols)]
-      return preprocessor
+            ("cat", categorical_transformer, categorical_cols)
+        ]
+        return preprocessor
 
 
 def main():
