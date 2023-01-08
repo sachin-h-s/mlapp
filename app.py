@@ -85,8 +85,8 @@ st.header("Make Predictions")
 new_data = st.text_input("Enter new data as comma-separated values:")
 if new_data:
 	new_data = [float(x) for x in new_data.split(",")]
-        prediction = model.predict([new_data])
-        st.write(f"Prediction: {prediction[0]:.2f}")
+	prediction = model.predict([new_data])
+	st.write(f"Prediction: {prediction[0]:.2f}")
 
 if name == "main":
 	main()
