@@ -48,7 +48,7 @@ if file is not None:
 # Select features and apply transformations
 if "df" in locals():
     preprocessor = select_and_transform_features(df)
-    X = preprocessor.fit_transform(df.drop(columns=["target"]))
+    X = preprocessor.fit_transform(df.iloc[: , :-1])
     y = df["target"]
 
 # Split data into training and test sets
