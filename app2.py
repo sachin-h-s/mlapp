@@ -46,13 +46,17 @@ if file is not None:
     df = load_data(file)
 
 # Select features and apply transformations
-if "df" in locals():
-    # Ask the user to specify the target column
-    target_col = st.text_input("Enter the name of the target column:")
-    if target_col:
+# if "df" in locals():
+#     # Ask the user to specify the target column
+#     target_col = st.text_input("Enter the name of the target column:")
+#     if target_col:
+#         preprocessor = select_and_transform_features(df)
+#         X = preprocessor.fit_transform(df.drop(columns=[target_col]))
+#         y = df[target_col]
+    if "df" in locals():
         preprocessor = select_and_transform_features(df)
-        X = preprocessor.fit_transform(df.drop(columns=[target_col]))
-        y = df[target_col]
+        X = preprocessor.fit_transform(df.drop(columns=["target"]))
+        y = df["target"]
 
 # Split data into training and test sets
 if "X" in locals() and "y" in locals():
