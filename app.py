@@ -78,7 +78,7 @@ if "model" in locals():
 if model_choice == "Random Forest":
 	st.write("Feature importances:")
 	importances = pd.Series(model.feature_importances_, index=df.drop(colums=["target"]).columns)
-        st.write(importances.sort_values(ascending=False))
+	st.write(importances.sort_values(ascending=False))
 
 #Allow user to make predictions on new data
 st.header("Make Predictions")
