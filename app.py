@@ -89,4 +89,4 @@ if new_data:
         st.write(f"Prediction: {prediction[0]:.2f}")
 
 if name == "main":
-main()
+	main()
