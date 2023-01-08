@@ -22,6 +22,14 @@ def select_and_transform_features(df, target_col):
     numeric_cols = df.select_dtypes(include=["int64", "float64"]).columns
     # Select categorical columns
     categorical_cols = df.select_dtypes(include=["object"]).columns
+
+    # Create a sidebar where users can select the features they want to use
+    selected_features = st.sidebar.multiselect("Select features", options=numeric_cols + categorical_cols)
+
+    # Create a sidebar where users can select the transformations they want to apply
+    transformations = ["none", "imputation", "scaling", "one-hot encoding"]
+    selected_transformations = st.sidebar.multiselect("Select transformations", options=transformations)
+
     # Apply transformations
     numeric_transformer = Pipeline(steps=[
         ("imputer", SimpleImputer(strategy="mean")),
@@ -58,28 +66,7 @@ if "df" in locals():
             X = preprocessor.fit_transform(df.drop(target_col))
             y = df[target_col]
         else:
-            print("The specified target column is not in the dataframe.")
-
-# if "df" in locals():
-#     # Ask the user to specify the target column
-#     target_col = st.text_input("Enter the name of the target column:")
-# if target_col in df.columns:
-#     preprocessor = select_and_transform_features(df, target_col)
-#     X = preprocessor.fit_transform(df.drop(target_col))
-#     y = df[target_col]
-# else:
-#     print("The specified target column is not in the dataframe.")
-    
-#     if target_col:
-#         preprocessor = select_and_transform_features(df, target_col)
-#         X = preprocessor.fit_transform(df.drop(columns=target_col))
-#         y = df[target_col]
-
-
-#     if "df" in locals():
-#         preprocessor = select_and_transform_features(df)
-#         X = preprocessor.fit_transform(df.drop(columns=["target"]))
-#         y = df["target"]
+            st.write("The specified target column is not in the dataframe.")
 
 # Split data into training and test sets
 if "X" in locals() and "y" in locals():
