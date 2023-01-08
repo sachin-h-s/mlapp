@@ -52,17 +52,28 @@ if file is not None:
 if "df" in locals():
     # Ask the user to specify the target column
     target_col = st.text_input("Enter the name of the target column:")
-if target_col in df.columns:
-    preprocessor = select_and_transform_features(df, target_col)
-    X = preprocessor.fit_transform(df.drop(target_col))
-    y = df[target_col]
-else:
-    print("The specified target column is not in the dataframe.")
-    
     if target_col:
-        preprocessor = select_and_transform_features(df, target_col)
-        X = preprocessor.fit_transform(df.drop(columns=target_col))
-        y = df[target_col]
+        if target_col in df.columns:
+            preprocessor = select_and_transform_features(df, target_col)
+            X = preprocessor.fit_transform(df.drop(target_col))
+            y = df[target_col]
+        else:
+            print("The specified target column is not in the dataframe.")
+
+# if "df" in locals():
+#     # Ask the user to specify the target column
+#     target_col = st.text_input("Enter the name of the target column:")
+# if target_col in df.columns:
+#     preprocessor = select_and_transform_features(df, target_col)
+#     X = preprocessor.fit_transform(df.drop(target_col))
+#     y = df[target_col]
+# else:
+#     print("The specified target column is not in the dataframe.")
+    
+#     if target_col:
+#         preprocessor = select_and_transform_features(df, target_col)
+#         X = preprocessor.fit_transform(df.drop(columns=target_col))
+#         y = df[target_col]
 
 
 #     if "df" in locals():
