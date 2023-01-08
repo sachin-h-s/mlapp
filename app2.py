@@ -34,7 +34,7 @@ def select_and_transform_features(df):
             ("num", numeric_transformer, numeric_cols),
             ("cat", categorical_transformer, categorical_cols)
         ]
-      return preprocessor
+     return preprocessor
 
 
 def main():
