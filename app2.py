@@ -50,7 +50,7 @@ if "df" in locals():
     # Ask the user to specify the target column
     target_col = st.text_input("Enter the name of the target column:")
     if target_col:
-        preprocessor = select_and_transform_features(df,target_col)
+        preprocessor = select_and_transform_features(df,"target_col")
         X = preprocessor.fit_transform(df.iloc[:, :-1])
         y = df[target_col]
         #fish_frame = fish_frame.iloc[:, :-1]
