@@ -3,4 +3,7 @@ numpy
 sklearn
 streamlit
 scikit-learn
+matplotlib
+seaborn
+joblib
 random-forest-mc
