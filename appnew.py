@@ -5,7 +5,10 @@ from sklearn.ensemble import RandomForestClassifier
 st.title('ML App')
 
 # Load the data
-df = pd.read_csv('data.csv')
+@st.cache
+def load_data(file):
+    df = pd.read_csv(file)
+    return df
 
 # Split the data into features and target
 X = df.drop('target', axis=1)
