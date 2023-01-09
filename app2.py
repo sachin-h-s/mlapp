@@ -63,9 +63,9 @@ if "df" in locals():
     if target_col:
         if target_col in df.columns:
             # Check the number of columns in df.drop(target_col)
-            if len(df.drop(target_col).columns) == len(preprocessor.transformers):
+            #if len(df.drop(target_col).columns) == len(preprocessor.transformers):
                 preprocessor = select_and_transform_features(df, target_col)
-                X = preprocessor.fit_transform(df.drop(target_col))
+                X = preprocessor.fit_transform(df.drop(target_col),axis=1)
                 y = df[target_col]
             else:
                 st.write("The number of columns in the data does not match the number of transformers in the preprocessor.")
