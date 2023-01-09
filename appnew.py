@@ -57,7 +57,7 @@ if uploaded_file is not None:
     X_transformed = pd.concat([pd.DataFrame(X_numeric_scaled), pd.DataFrame(X_categorical_encoded.toarray())], axis=1)
 
     # Train a model
-    model = LinearRegression()z
+    model = LinearRegression()
     model.fit(X_transformed, y)
 
     # Create a form for inputting new data
