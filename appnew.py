@@ -11,9 +11,8 @@ if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
 
     # Split the data into features and target
-    target_column = st.selectbox('Select the target column', df.columns)
-    X = df.drop(target_column, axis=1)
-    y = df[target_column]
+    X = df.drop('target', axis=1)
+    y = df['target']
 
     # Train a model
     model = RandomForestClassifier()
