@@ -57,6 +57,7 @@ if uploaded_file is not None:
     X_transformed = pd.concat([pd.DataFrame(X_numeric_scaled), pd.DataFrame(X_categorical_encoded.toarray())], axis=1)
 
     # Train a model
+    #model = RandomForestClassifier()
     model = LinearRegression()
     model.fit(X_transformed, y)
 
