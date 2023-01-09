@@ -18,13 +18,13 @@ if uploaded_file is not None:
     model = RandomForestClassifier()
     model.fit(X, y)
 
-    # Create a sidebar with a slider for selecting a sample
-    sample_index = st.sidebar.slider('Select a sample', 0, len(df)-1)
+    # Create a form for inputting new data
+    st.subheader('Predict for new data')
+    new_data = {}
+    for column in X.columns:
+        new_data[column] = st.number_input(column)
+    new_data = pd.DataFrame(new_data, index=[0])
 
-    # Display the selected sample
-    st.subheader('Selected sample')
-    st.write(X.iloc[sample_index, :])
-
-    # Predict the target for the selected sample
-    prediction = model.predict(X.iloc[sample_index, :].values.reshape(1, -1))
+    # Predict the target for the new data
+    prediction = model.predict(new_data)
     st.write('Prediction:', prediction[0])
